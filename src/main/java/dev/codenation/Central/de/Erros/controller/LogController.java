@@ -2,10 +2,9 @@ package dev.codenation.Central.de.Erros.controller;
 
 import dev.codenation.Central.de.Erros.model.Log;
 import dev.codenation.Central.de.Erros.service.Impl.LogServiceImpl;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/logs")
@@ -23,6 +22,10 @@ public class LogController {
         return logService.create(log);
     }
     //getAll
+    @GetMapping
+    public List<Log> getAll() {
+        return logService.getAll();
+    }
     //getById
     //getByFilter
 }

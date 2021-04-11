@@ -5,6 +5,8 @@ import dev.codenation.Central.de.Erros.repository.LogRepository;
 import dev.codenation.Central.de.Erros.service.Interfaces.LogServiceInterface;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LogServiceImpl implements LogServiceInterface {
 
@@ -20,8 +22,8 @@ public class LogServiceImpl implements LogServiceInterface {
     }
 
     @Override
-    public Log getAll() {
-        return null;
+    public List<Log> getAll() {
+        return logRepository.findAll();
     }
 
     @Override
@@ -30,7 +32,7 @@ public class LogServiceImpl implements LogServiceInterface {
     }
 
     @Override
-    public Log getByFilter() {
+    public List<Log> getByFilter() {
         return null;
     }
 }
