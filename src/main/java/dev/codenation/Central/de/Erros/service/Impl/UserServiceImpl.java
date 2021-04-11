@@ -3,9 +3,6 @@ package dev.codenation.Central.de.Erros.service.Impl;
 import dev.codenation.Central.de.Erros.model.User;
 import dev.codenation.Central.de.Erros.repository.UserRepository;
 import dev.codenation.Central.de.Erros.service.Interfaces.UserServiceInterface;
-import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
