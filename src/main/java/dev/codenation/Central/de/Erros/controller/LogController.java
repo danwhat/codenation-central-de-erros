@@ -30,13 +30,17 @@ public class LogController {
     //getAll
     // getByFilter
     @GetMapping
-    public List<LogDTO> getAllAndgetByFilter(@PathParam("filter") String filter, @PathParam("value")String value) {
+    public ResponseEntity<List<LogDTO>> getAllAndgetByFilter(@PathParam("filter") String filter, @PathParam("value")String value) {
         if (filter == null) {
             List<Log> listaLog = logService.getAll();
-            return listaLog.stream().map(log -> new LogDTO(log)).collect(Collectors.toList());
+            return ResponseEntity.status(HttpStatus.OK).body(listaLog.stream().map(log -> new LogDTO(log)).collect(Collectors.toList()));
         }  else {
             List<Log> listaLog = logService.getByFilter(filter, value);
-            return listaLog.stream().map(log -> new LogDTO(log)).collect(Collectors.toList());
+            if (listaLog == null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            }   else {
+                return ResponseEntity.status(HttpStatus.OK).body(listaLog.stream().map(log -> new LogDTO(log)).collect(Collectors.toList()));
+            }
         }
     }
     //getById

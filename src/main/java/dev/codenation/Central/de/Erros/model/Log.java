@@ -4,6 +4,8 @@ import lombok.Getter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -11,7 +13,7 @@ import java.util.Date;
 @Table(name="logs")
 public class Log {
 
-    public Log(Long id, @NotNull String level, @NotNull String description, @NotNull String log, @NotNull String origin, @NotNull Date date, @NotNull Long quantity) {
+    public Log(Long id, @NotNull String level, @NotNull String description, @NotNull String log, @NotNull String origin, @NotNull LocalDateTime date, @NotNull Long quantity) {
         this.id = id;
         this.level = level;
         this.description = description;
@@ -46,7 +48,7 @@ public class Log {
 
     @NotNull
     @Column
-    Date date;
+    LocalDateTime date;
 
     @NotNull
     @Column
@@ -72,7 +74,7 @@ public class Log {
         this.origin = origin;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

@@ -3,7 +3,7 @@ package dev.codenation.Central.de.Erros.controller.dto;
 import dev.codenation.Central.de.Erros.model.Log;
 import lombok.Getter;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Getter
 public class LogDTO {
@@ -12,7 +12,7 @@ public class LogDTO {
     String level;
     String description;
     String origin;
-    Date date;
+    LocalDateTime date;
     Long quantity;
 
     public LogDTO(Log log) {
