@@ -3,6 +3,8 @@ package dev.codenation.Central.de.Erros.controller;
 import dev.codenation.Central.de.Erros.controller.dto.LogDTO;
 import dev.codenation.Central.de.Erros.model.Log;
 import dev.codenation.Central.de.Erros.service.Impl.LogServiceImpl;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,16 +32,16 @@ public class LogController {
     //getAll
     // getByFilter
     @GetMapping
-    public ResponseEntity<List<LogDTO>> getAllAndgetByFilter(@PathParam("filter") String filter, @PathParam("value")String value) {
+    public ResponseEntity<Page<LogDTO>> getAllAndgetByFilter(@PathParam("filter") String filter, @PathParam("value")String value, Pageable pageable) {
         if (filter == null) {
-            List<Log> listaLog = logService.getAll();
-            return ResponseEntity.status(HttpStatus.OK).body(listaLog.stream().map(log -> new LogDTO(log)).collect(Collectors.toList()));
+            Page<Log> listaLog = logService.getAll(pageable);
+            return ResponseEntity.status(HttpStatus.OK).body(listaLog.map(log -> new LogDTO(log)));
         }  else {
-            List<Log> listaLog = logService.getByFilter(filter, value);
+            Page<Log> listaLog = logService.getByFilter(filter, value, pageable);
             if (listaLog == null) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }   else {
-                return ResponseEntity.status(HttpStatus.OK).body(listaLog.stream().map(log -> new LogDTO(log)).collect(Collectors.toList()));
+                return ResponseEntity.status(HttpStatus.OK).body(listaLog.map(log -> new LogDTO(log)));
             }
         }
     }
@@ -50,5 +52,4 @@ public class LogController {
         return log.map(value -> ResponseEntity.status(HttpStatus.OK).body(value))
                .orElseGet(() -> ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null));
     }
-
 }

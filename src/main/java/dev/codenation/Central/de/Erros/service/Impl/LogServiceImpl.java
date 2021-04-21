@@ -3,12 +3,11 @@ package dev.codenation.Central.de.Erros.service.Impl;
 import dev.codenation.Central.de.Erros.model.Log;
 import dev.codenation.Central.de.Erros.repository.LogRepository;
 import dev.codenation.Central.de.Erros.service.Interfaces.LogServiceInterface;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,8 +25,8 @@ public class LogServiceImpl implements LogServiceInterface {
     }
 
     @Override
-    public List<Log> getAll() {
-        return logRepository.findAll();
+    public Page<Log> getAll(Pageable pageable) {
+        return logRepository.findAll(pageable);
     }
 
     @Override
@@ -36,20 +35,20 @@ public class LogServiceImpl implements LogServiceInterface {
     }
 
     @Override
-    public List<Log> getByFilter(String filter, String value) {
+    public Page<Log> getByFilter(String filter, String value, Pageable pageable) {
         switch (filter) {
             case "level" :
-                return logRepository.findByLevel(value);
+                return logRepository.findByLevel(value, pageable);
             case "description" :
-                return logRepository.findByDescription(value);
+                return logRepository.findByDescription(value, pageable);
             case "origin" :
-                return logRepository.findByOrigin(value);
+                return logRepository.findByOrigin(value, pageable);
             case "date" :
-                return logRepository.findByDate(LocalDateTime.parse(value));
+                return logRepository.findByDate(LocalDateTime.parse(value), pageable);
             case "quantity" :
-                return logRepository.findByQuantity(Long.valueOf(value));
+                return logRepository.findByQuantity(Long.valueOf(value), pageable);
             default:
                 return null;
+        }
     }
-}
 }
