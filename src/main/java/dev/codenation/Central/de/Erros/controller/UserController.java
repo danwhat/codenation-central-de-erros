@@ -4,6 +4,8 @@ import dev.codenation.Central.de.Erros.model.User;
 import dev.codenation.Central.de.Erros.service.Impl.UserServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -20,14 +22,27 @@ public class UserController {
 
     private final UserServiceImpl userService;
 
+
+
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json", consumes = "application/json")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "User returned"),
+            @ApiResponse(code = 500, message = "Internal error")
+    })
+    @ApiOperation("Find a user by email")
     @GetMapping
-    @ApiOperation("Procura por Email")
     public Optional<User> FindByEmail(@RequestBody User user) {
         return userService.FindByEmail(user.getEmail());
     }
 
+
+    @RequestMapping(value = "/", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "User returned"),
+            @ApiResponse(code = 500, message = "Internal error")
+    })
+    @ApiOperation("Create a new User")
     @PostMapping
-    @ApiOperation("Cria o Nando")
     public User CreateUser(@RequestBody User user) {
         return userService.SaveUser(user);
     }
