@@ -1,4 +1,4 @@
-package dev.codenation.Central.de.Erros.controller.config;
+package dev.codenation.Central.de.Erros.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,8 +21,9 @@ import javax.annotation.Resource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/users");
+    public void configure(final WebSecurity web) throws Exception {
+        web.ignoring()
+                .antMatchers("/**");
     }
 
     @Bean
