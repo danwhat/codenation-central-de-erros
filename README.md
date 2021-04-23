@@ -15,7 +15,7 @@ API para gerenciamento de logs de erros. Desafio prático Aceleração Codenatio
 
 Caso prefira, você pode acessar a documentação do swagger acessando a url `http://localhost:8080/swagger-ui.html`
 
-## Tabela de Endpoints
+## Descrição dos Endpoints
 
  **/user - POST** - Rota para criação de usuário. 
 Recebe  através do **body** da requisição o email e senha, e cria um novo usuário.
@@ -34,12 +34,24 @@ Recebe  através do **body** da requisição o email e senha, e cria um novo usu
 	*Colocar a estrutura aqui*
 ```
 
-**GET - /log/** - Rota para listagem de Logs com paginação.
- Exemplificar utilização dos filtros, sort e paginação.
+**GET - /log** - Rota para listagem de **Logs** com paginação. Requer **token** valido para ser acessado.
+- Caso nenhum parametro de filtro seja passado pela url, o endpoint retornará uma pagina com até 20 registros e informações como total de registros, pagina atual etc.
 
- **GET - /log/id** - Rota para exibir um Log especifico.
+- É possível definir a estrutura das páginas e qual acessar através dos parâmetros **size** e **page**, respectivamente.
+Exemplo: `http://localhost:8080/log?page=2&size=10`
 
-**POST - /log** - Rota para criação de Log. 
+- É possível filtrar os logs retornados através dos parâmetros **filter** e **value**.
+Exemplo: `http://localhost:8080/log?filter=level&value=error`
+
+- É possível ordenar os logs retornados através do parâmetro **sort**.
+Exemplo: `http://localhost:8080/log?sort=id,desc`
+
+**Obs:** Todos os parâmetros anteriores podem ser usados de forma simultanea.
+
+
+ **GET - /log/id** - Rota para exibir um Log especifico. Requer **token** valido para ser acessado.
+
+**POST - /log** - Rota para criação de Log.  Requer **token** valido para ser acessado.
 ```json
 // Corpo da requisição:
 {
