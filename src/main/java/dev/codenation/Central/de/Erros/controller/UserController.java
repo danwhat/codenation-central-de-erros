@@ -24,7 +24,7 @@ public class UserController {
 
 
 
-    @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json", consumes = "application/json")
+
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "User returned"),
             @ApiResponse(code = 500, message = "Internal error")
