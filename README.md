@@ -64,7 +64,8 @@ Exemplo: `http://localhost:8080/log?sort=id,desc`
 }
 ```
 # Equipe
-**Dan**  - github - linkedin
-**Denner** - github - linkedin
-**Mell** - github - linkedin
-**Pedro** - github - linkedin
+| ![luciano](https://avatars.githubusercontent.com/u/62217873?v=4) | ![luciano](https://avatars.githubusercontent.com/u/69821947?v=4) |![luciano](https://avatars.githubusercontent.com/u/69804027?v=4)|![luciano](https://avatars.githubusercontent.com/u/63373302?v=4)|![luciano](https://avatars.githubusercontent.com/u/56321955?v=4)|
+|--|--|--|--|--|
+<center> **Dan**|<center>**Denner**|<center>**Mel**|<center>**Luciano**|<center>**Pedro** |
+<center>github|<center>github|<center>github|<center>github|<center>github|
+<center>linkedin|<center>linkedin|<center>linkedin|<center>linkedin|<center>linkedin|
