@@ -2,12 +2,12 @@
 API para gerenciamento de logs de erros. Desafio prático Aceleração Codenation com apoio da Conta Azul.
 
 # Tecnologias Utilizadas
-- Java
-- Spring Boot
-- Maven
-- PostgreSQL
-- Swagger
-- Oauth2
+- Java 1.8
+- Spring Boot 2.4.4
+- Maven 
+- PostgreSQL 12.2
+- Swagger 2.7.0
+- Oauth 2
 
 # Instalação
 
