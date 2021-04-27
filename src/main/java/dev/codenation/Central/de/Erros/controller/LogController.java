@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/logs")
+@CrossOrigin(origins ="*" )
 public class LogController {
 
     public LogController(LogServiceImpl logService) {
