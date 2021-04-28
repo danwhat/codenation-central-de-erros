@@ -22,22 +22,11 @@ import javax.annotation.Resource;
 @EnableAuthorizationServer
 @EnableResourceServer
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    @Override
-    public void configure(final WebSecurity web) throws Exception {
-        web.ignoring()
-                .antMatchers(new String[]{"/v2/api-docs",
-                        "/configuration/ui",
-                        "/swagger-resources/**",
-                        "/configuration/security",
-                        "/swagger-ui.html",
-                        "/webjars/**",
-                        "/users",
-                        "/oauth/token/**"});
-    }
+
     @Bean
     @Override
     protected AuthenticationManager authenticationManager() throws Exception {
-        return super.authenticationManager();
+        return authenticationManagerBean();
     }
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -58,12 +47,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.headers().cacheControl();
-        http.cors().and()
-                .authorizeRequests()
+                http.authorizeRequests()
                 .antMatchers("/", "/oauth/token/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/**").permitAll()
+                        .antMatchers("/v2/api-docs",
+                                "/configuration/ui",
+                                "/swagger-resources/**",
+                                "/configuration/security",
+                                "/swagger-ui.html",
+                                "/webjars/**",
+                                "/users",
+                                "/oauth/token/**").permitAll()
                 .anyRequest().authenticated();
     }
 }
+
+/*{})*/
