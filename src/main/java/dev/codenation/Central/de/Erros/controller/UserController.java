@@ -20,10 +20,10 @@ public class UserController {
 
     private final UserServiceImpl userService;
 
-    @GetMapping
+    @GetMapping("/{user}")
     @ApiOperation("Procura por Email")
-    public Optional<User> FindByEmail(@RequestBody User user) {
-        return userService.FindByEmail(user.getEmail());
+    public Optional<User> FindByEmail(@PathVariable("user") String user) {
+        return userService.FindByEmail(user);
     }
 
     @PostMapping
