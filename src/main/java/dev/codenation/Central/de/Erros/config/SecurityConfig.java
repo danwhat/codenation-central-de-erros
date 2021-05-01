@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(final WebSecurity web) throws Exception {
         web.ignoring()
-                .antMatchers("/users","/users/**");
+                .antMatchers("/users","/users/**","/oauth/token");
     }
 
 
