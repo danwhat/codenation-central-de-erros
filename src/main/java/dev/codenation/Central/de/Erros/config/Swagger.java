@@ -19,7 +19,7 @@ public class Swagger {
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("dev.codenation.Central.de.Erros.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(metaInfo());
@@ -27,11 +27,11 @@ public class Swagger {
 
     private ApiInfo metaInfo() {
         ApiInfo apiInfo = new ApiInfo(
-                "Ta funcionando",
-                "Api descição",
+                "API Central de erros",
+                "Api para o desafio codenation, cria usuarios e logs para a aplicação",
                 "1.0",
                 "Terms of Service",
-                "Dan",
+                "Atucanados",
                 "Apache License Version 2.0",
                 "https://www.apache.org/licesen.html"
         );
