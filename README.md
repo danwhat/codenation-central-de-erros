@@ -9,8 +9,6 @@ API para gerenciamento de logs de erros. Desafio prático Aceleração Codenatio
 - Swagger 2.7.0
 - Oauth 2
 
-# Instalação
-
 # Documentação da API:
 
 Caso prefira, você pode acessar a documentação do swagger acessando a url `http://localhost:8080/swagger-ui.html`
